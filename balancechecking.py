@@ -45,7 +45,8 @@ class Solution:
                  if parenthesis[index] == "'":
                     if parenthesis[len(parenthesis)-index-1] != "'":
                         return False   
-
+                 else:
+                    return False
                 
             return True
             
