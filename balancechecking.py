@@ -1,57 +1,26 @@
-"""
-Copyright MIT BWSI Autonomous RACECAR Course
-MIT License
-Summer 2023
-
-Code Clash #12 - Braces Brackets & Bows Balance (balancechecking.py)
-
-
-Author: Ali Qattan
-
-Difficulty Level: 6/10
-
-Prompt: In your IDEs, your code editors and sometimes Vim (for those 
-unfortunate ones who use vim) your application will yell at you when you don’t
-have matching closing brackets. Python does not have that problem as much as
-other languages like Java and C which rely heavily on curly braces.  You need 
-to write a program that allows for that functionality so that every ‘[‘ and ‘{‘ 
-and ‘(‘ has a matching ‘]’  ‘}’  ‘)’. 
-This problem can be solved quickly using the right data structure.
-
-Test Cases:
-Input: {[()]}  Output: True
-
-Input: [()]  Output: True
-
-Input:{[{}]  Output: False
-[{('')}]
-
-"""
 class Solution:
     def isBalanced(self, parenthesis): 
-            #type parenthesis: string
-            #return type: boolean
-            for index , i in enumerate(parenthesis):
-                 if parenthesis[index] == '(':
-                    if parenthesis[len(parenthesis)-index-1] != ')':
-                        return False
-                 if parenthesis[index] == '{':
-                    if parenthesis[len(parenthesis)-index-1] != '}':
-                        return False
-                    
-                 if parenthesis[index] == '[':
-                    if parenthesis[len(parenthesis)-index-1] != ']':
-                        return False
-                 if parenthesis[index] == "'":
-                    if parenthesis[len(parenthesis)-index-1] != "'":
-                        return False   
-                 else:
-                    return False
-                
+        brackets = 0
+        parens = 0
+        curly = 0
+        for p in parenthesis:
+            if "{" == p:
+                curly = curly + 1
+            if "}" == p:
+                curly -= 1
+            if "[" == p:
+                brackets += 1
+            if "]" == p:
+                brackets -= 1
+            if "(" == p:
+                parens += 1
+            if ")" == p :
+                parens -= 1
+        if brackets == 0 and parens == 0 and curly == 0:
             return True
-            
-            #TODO: Write code below to returnn a boolean value with the solution to the prompt.
-            pass
+        return False
+        
+        pass
 
 def main():
     str1=input()
